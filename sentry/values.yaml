@@ -1263,6 +1263,7 @@ config:
 
 clickhouse:
   enabled: true
+  singleNode: false
   clickhouse:
     imageVersion: "21.8.13.6"
     configmap:
@@ -1315,7 +1316,7 @@ externalClickhouse:
   username: default
   password: ""
   database: default
-  singleNode: true
+  singleNode: false
   # existingSecret: secret-name
   ## set existingSecretKey if key name inside existingSecret is different from 'postgres-password'
   # existingSecretKey: secret-key-name
@@ -1358,18 +1359,30 @@ kafka:
           "message.timestamp.type": LogAppendTime
       - name: event-replacements
       - name: snuba-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: cdc
       - name: transactions
         config:
           "message.timestamp.type": LogAppendTime
       - name: snuba-transactions-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: snuba-metrics
         config:
           "message.timestamp.type": LogAppendTime
       - name: outcomes
       - name: ingest-sessions
       - name: snuba-sessions-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: snuba-metrics-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: scheduled-subscriptions-events
       - name: scheduled-subscriptions-transactions
       - name: scheduled-subscriptions-sessions
@@ -1397,12 +1410,24 @@ kafka:
         config:
           "message.timestamp.type": LogAppendTime
       - name: snuba-generic-metrics-sets-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: snuba-generic-metrics-distributions-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: snuba-generic-metrics-counters-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: generic-events
         config:
           "message.timestamp.type": LogAppendTime
       - name: snuba-generic-events-commit-log
+        config:
+          "cleanup.policy": "compact.delete"
+          "min.compaction.lag.ms": "3600000"
       - name: group-attributes
         config:
           "message.timestamp.type": LogAppendTime
@@ -1427,13 +1452,17 @@ kafka:
       - name: profiles
       - name: ingest-occurrences
       - name: snuba-spans
+      - name: shared-resources-usage
   zookeeper:
-    enabled: true
-  kraft:
     enabled: false
+  kraft:
+    enabled: true
   service:
     ports:
       client: 9092
+  listeners:
+    client:
+      protocol: PLAINTEXT
 
   ## Use this to enable an extra service account
   # serviceAccount:
