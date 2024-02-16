@@ -3,7 +3,7 @@ entries:
   sentry:
   - apiVersion: v2
     appVersion: 24.1.2
-    created: "2024-02-16T14:34:09.752369694Z"
+    created: "2024-02-16T14:39:14.005064609Z"
     dependencies:
     - condition: sourcemaps.enabled
       name: memcached
@@ -39,7 +39,7 @@ entries:
       repository: oci://registry-1.docker.io/bitnamicharts
       version: 14.2.2
     description: A Helm chart for Kubernetes
-    digest: 6bc78d1dbfd1a929bbb487c900c5ae9344fb7c94fd3f1b5948320e7df4c2b385
+    digest: a0120b341080524e065698b9610a715f43978856789fcf8ed601ec09aedfaf9c
     maintainers:
     - name: sentry-kubernetes
     - name: hurdlegroup
@@ -48,4 +48,4 @@ entries:
     urls:
     - https://hurdlegroup.github.io/charts/sentry-21.6.0.tgz
     version: 21.6.0
-generated: "2024-02-16T14:34:09.714235518Z"
+generated: "2024-02-16T14:39:13.966402224Z"
