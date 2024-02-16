@@ -3,7 +3,54 @@ entries:
   sentry:
   - apiVersion: v2
     appVersion: 24.1.2
-    created: "2024-02-16T14:39:14.005064609Z"
+    created: "2024-02-16T14:48:01.901040888Z"
+    dependencies:
+    - condition: sourcemaps.enabled
+      name: memcached
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 6.5.9
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 17.11.3
+    - condition: kafka.enabled
+      name: kafka
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 26.4.5
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://sentry-kubernetes.github.io/charts
+      version: 3.7.0
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 11.4.11
+    - alias: rabbitmq
+      condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 11.16.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 12.5.1
+    - condition: nginx.enabled
+      name: nginx
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.2.2
+    description: A Helm chart for Kubernetes
+    digest: 4960f5881fcdd935dff29366a4f6bce1751da1a3e5b3b121d0d52ccad4133b7e
+    maintainers:
+    - name: sentry-kubernetes
+    - name: hurdlegroup
+    name: sentry
+    type: application
+    urls:
+    - https://hurdlegroup.github.io/charts/sentry-21.6.1.tgz
+    version: 21.6.1
+  - apiVersion: v2
+    appVersion: 24.1.2
+    created: "2024-02-16T14:48:01.864268993Z"
     dependencies:
     - condition: sourcemaps.enabled
       name: memcached
@@ -48,4 +95,4 @@ entries:
     urls:
     - https://hurdlegroup.github.io/charts/sentry-21.6.0.tgz
     version: 21.6.0
-generated: "2024-02-16T14:39:13.966402224Z"
+generated: "2024-02-16T14:48:01.826033846Z"
