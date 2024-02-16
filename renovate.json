@@ -1,6 +1,0 @@
-{
-  "extends": ["config:recommended", ":rebaseStalePrs"],
-  "enabled": true,
-  "prConcurrentLimit": 30,
-  "enabledManagers": ["helmv3", "github-actions"]
-}
