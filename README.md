@@ -8,7 +8,7 @@ Big thanks to the maintainers of the [deprecated chart](https://github.com/helm/
 
 ## How this chart works
 
-`helm repo add sentry https://hurdlegroup.github.io/charts`
+`helm repo add hurdlegroup https://hurdlegroup.github.io/charts`
 
 ## Values
 
