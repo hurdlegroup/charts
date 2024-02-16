@@ -40,3 +40,4 @@ dependencies:
     condition: nginx.enabled
 maintainers:
   - name: sentry-kubernetes
+  - name: hurdlegroup
