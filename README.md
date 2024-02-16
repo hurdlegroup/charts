@@ -8,7 +8,7 @@ Big thanks to the maintainers of the [deprecated chart](https://github.com/helm/
 
 ## How this chart works
 
-`helm repo add sentry https://sentry-kubernetes.github.io/charts`
+`helm repo add sentry https://hurdlegroup.github.io/charts`
 
 ## Values
 
@@ -80,7 +80,7 @@ If you encountered this issue, please reset `counters-0`, `triggers-0` queues.
 
 system.secret-key is removed
 
-See https://github.com/sentry-kubernetes/charts/tree/develop/sentry#sentry-secret-key
+See https://github.com/hurdlegroup/charts/tree/develop/sentry#sentry-secret-key
 
 
 ## Upgrading from 14.x.x version of this Chart to 15.x.x
