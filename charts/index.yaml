@@ -3,7 +3,54 @@ entries:
   sentry:
   - apiVersion: v2
     appVersion: 24.2.0
-    created: "2024-03-28T11:16:53.783616076Z"
+    created: "2024-03-28T11:19:49.752438356Z"
+    dependencies:
+    - condition: sourcemaps.enabled
+      name: memcached
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 6.5.9
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 17.11.3
+    - condition: kafka.enabled
+      name: kafka
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 26.4.5
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://sentry-kubernetes.github.io/charts
+      version: 3.7.0
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 11.4.11
+    - alias: rabbitmq
+      condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 11.16.2
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 12.5.1
+    - condition: nginx.enabled
+      name: nginx
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.2.2
+    description: A Helm chart for Kubernetes
+    digest: cc10c22b8b3f57a0a9bbbb42aa506f14d4cff7b3484c325443e188eab978048c
+    maintainers:
+    - name: sentry-kubernetes
+    - name: hurdlegroup
+    name: sentry
+    type: application
+    urls:
+    - https://hurdlegroup.github.io/charts/sentry-21.7.2.tgz
+    version: 21.7.2
+  - apiVersion: v2
+    appVersion: 24.2.0
+    created: "2024-03-28T11:19:49.716267549Z"
     dependencies:
     - condition: sourcemaps.enabled
       name: memcached
@@ -50,7 +97,7 @@ entries:
     version: 21.7.1
   - apiVersion: v2
     appVersion: 24.2.0
-    created: "2024-03-28T11:16:53.746967747Z"
+    created: "2024-03-28T11:19:49.678993426Z"
     dependencies:
     - condition: sourcemaps.enabled
       name: memcached
@@ -97,7 +144,7 @@ entries:
     version: 21.7.0
   - apiVersion: v2
     appVersion: 24.1.2
-    created: "2024-03-28T11:16:53.710288204Z"
+    created: "2024-03-28T11:19:49.642664867Z"
     dependencies:
     - condition: sourcemaps.enabled
       name: memcached
@@ -144,7 +191,7 @@ entries:
     version: 21.6.1
   - apiVersion: v2
     appVersion: 24.1.2
-    created: "2024-03-28T11:16:53.673018554Z"
+    created: "2024-03-28T11:19:49.60663893Z"
     dependencies:
     - condition: sourcemaps.enabled
       name: memcached
@@ -189,4 +236,4 @@ entries:
     urls:
     - https://hurdlegroup.github.io/charts/sentry-21.6.0.tgz
     version: 21.6.0
-generated: "2024-03-28T11:16:53.633450989Z"
+generated: "2024-03-28T11:19:49.568142031Z"
