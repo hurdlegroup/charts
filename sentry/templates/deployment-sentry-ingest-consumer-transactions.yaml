@@ -89,9 +89,9 @@ spec:
           - "--max-batch-size"
           - "{{ .Values.sentry.ingestConsumer.maxBatchSize }}"
           {{- end }}
-          {{ - if .Values.sentry.ingestConsumer.noStrictOffsetReset }}
+          {{- if .Values.sentry.ingestConsumer.noStrictOffsetReset }}
           - "--no-strict-offset-reset"
-          {{ - end }}
+          {{- end }}
         env:
         - name: C_FORCE_ROOT
           value: "true"
