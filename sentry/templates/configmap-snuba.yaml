@@ -23,6 +23,8 @@ data:
       {
         "host": env("CLICKHOUSE_HOST", {{ include "sentry.clickhouse.host" . | quote }}),
         "port": int({{ include "sentry.clickhouse.port" . }}),
+        "max_connections": int(os.environ.get("CLICKHOUSE_MAX_CONNECTIONS", 1)),
+        "block_connections": bool(os.environ.get("CLICKHOUSE_BLOCK_CONNECTIONS", False)),
         "user":  env("CLICKHOUSE_USER", "default"),
         "password": env("CLICKHOUSE_PASSWORD", ""),
         "database": env("CLICKHOUSE_DATABASE", "default"),

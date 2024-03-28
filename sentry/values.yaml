@@ -953,6 +953,10 @@ snuba:
   migrateJob:
     env: []
 
+  clickhouse:
+    maxConnections: 1
+    blockConnections: false
+
 hooks:
   enabled: true
   removeOnSuccess: true
