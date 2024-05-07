@@ -88,6 +88,7 @@ vroom:
     # volumeMounts: []
 
 relay:
+  enabled: true
   replicas: 1
   # args: []
   mode: managed
@@ -122,6 +123,7 @@ relay:
   init:
     resources: {}
     # additionalArgs: []
+    # credentialsSubcommand: ""
     # env: []
     # volumes: []
     # volumeMounts: []
@@ -137,6 +139,7 @@ sentry:
   # existingSecretKey: "my-secret-key"
   singleOrganization: true
   web:
+    enabled: true
     # if using filestore backend filesystem with RWO access, set strategyType to Recreate
     strategyType: RollingUpdate
     replicas: 1
@@ -181,6 +184,7 @@ sentry:
     enableFeedback: false
 
   worker:
+    enabled: true
     replicas: 3
     # concurrency: 4
     env: []
@@ -207,6 +211,7 @@ sentry:
     volumeMounts: []
 
   ingestConsumer:
+    enabled: true
     replicas: 1
     # concurrency: 4
     env: []
@@ -229,12 +234,17 @@ sentry:
     sidecars: []
     volumes: []
 
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
 
-  # noStrictOffsetReset: false
+    # noStrictOffsetReset: false
   ingestReplayRecordings:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -254,6 +264,10 @@ sentry:
       targetCPUUtilizationPercentage: 50
     sidecars: []
     volumes: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
 
     # volumeMounts:
     #   - mountPath: /dev/shm
@@ -280,10 +294,15 @@ sentry:
     sidecars: []
     volumes: []
 
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
   ingestOccurrences:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -304,11 +323,16 @@ sentry:
     sidecars: []
     volumes: []
 
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
 
   ingestMonitors:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -328,12 +352,16 @@ sentry:
       targetCPUUtilizationPercentage: 50
     sidecars: []
     volumes: []
-
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
 
   billingMetricsConsumer:
+    enabled: true
     replicas: 1
     # concurrency: 4
     env: []
@@ -356,11 +384,16 @@ sentry:
     sidecars: []
     volumes: []
 
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
 
   genericMetricsConsumer:
+    enabled: true
     replicas: 1
     # concurrency: 4
     env: []
@@ -383,11 +416,16 @@ sentry:
     sidecars: []
     volumes: []
 
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
 
   metricsConsumer:
+    enabled: true
     replicas: 1
     # concurrency: 4
     env: []
@@ -410,11 +448,16 @@ sentry:
     sidecars: []
     volumes: []
 
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts:
     #   - mountPath: /dev/shm
     #     name: dshm
 
   cron:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -429,6 +472,7 @@ sentry:
     # logLevel: info
 
   subscriptionConsumerEvents:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -440,6 +484,10 @@ sentry:
     # podLabels: []
     sidecars: []
     volumes: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # volumeMounts: []
 
@@ -459,6 +507,7 @@ sentry:
     # volumeMounts: []
 
   subscriptionConsumerTransactions:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -470,11 +519,16 @@ sentry:
     # podLabels: []
     sidecars: []
     volumes: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # volumeMounts: []
 
 
   postProcessForwardErrors:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -487,8 +541,13 @@ sentry:
     sidecars: []
     volumes: []
     # volumeMounts: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
 
   postProcessForwardTransactions:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -500,8 +559,14 @@ sentry:
     # podLabels: []
     sidecars: []
     volumes: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumeMounts: []
+    # noStrictOffsetReset: false
   postProcessForwardIssuePlatform:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -514,8 +579,13 @@ sentry:
     sidecars: []
     volumes: []
     # volumeMounts: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
 
   subscriptionConsumerGenericMetrics:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -528,8 +598,13 @@ sentry:
     sidecars: []
     volumes: []
     # volumeMounts: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
 
   subscriptionConsumerMetrics:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -542,6 +617,10 @@ sentry:
     sidecars: []
     volumes: []
     # volumeMounts: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
 
   cleanup:
     successfulJobsHistoryLimit: 5
@@ -561,6 +640,7 @@ sentry:
 
 snuba:
   api:
+    enabled: true
     replicas: 1
     # set command to ["snuba","api"] if securityContext.runAsUser > 0
     # see: https://github.com/getsentry/snuba/issues/956
@@ -593,6 +673,7 @@ snuba:
     # volumeMounts: []
 
   consumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -603,6 +684,10 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # maxBatchSize: ""
     # processes: ""
@@ -621,6 +706,7 @@ snuba:
     #       medium: Memory
 
   outcomesConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -633,6 +719,10 @@ snuba:
     autoOffsetReset: "earliest"
     # noStrictOffsetReset: false
     maxBatchSize: "3"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # processes: ""
     # inputBlockSize: ""
     # outputBlockSize: ""
@@ -649,6 +739,7 @@ snuba:
     #       medium: Memory
 
   replacer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -666,6 +757,7 @@ snuba:
     # volumeMounts: []
 
   metricsConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -676,10 +768,15 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumes: []
     # volumeMounts: []
 
   subscriptionConsumerEvents:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -690,10 +787,15 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumes: []
     # volumeMounts: []
 
   genericMetricsCountersConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -704,10 +806,15 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumes: []
     # volumeMounts: []
 
   genericMetricsDistributionConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -718,10 +825,15 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumes: []
     # volumeMounts: []
 
   genericMetricsSetsConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -732,10 +844,15 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumes: []
     # volumeMounts: []
 
   subscriptionConsumerMetrics:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -746,10 +863,15 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # volumes: []
     # volumeMounts: []
 
   subscriptionConsumerTransactions:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -762,6 +884,10 @@ snuba:
     autoOffsetReset: "earliest"
     # volumes: []
     # volumeMounts: []
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
 
   subscriptionConsumerSessions:
     replicas: 1
@@ -781,6 +907,7 @@ snuba:
     # volumeMounts: []
 
   replaysConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -791,6 +918,10 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # maxBatchSize: ""
     # processes: ""
@@ -837,6 +968,7 @@ snuba:
     #       medium: Memory
 
   transactionsConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -847,6 +979,10 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # maxBatchSize: ""
     # processes: ""
@@ -875,6 +1011,10 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # maxBatchSize: ""
     # processes: ""
@@ -903,6 +1043,10 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # maxBatchSize: ""
     # processes: ""
@@ -920,6 +1064,7 @@ snuba:
     #     emptyDir:
     #       medium: Memory
   issueOccurrenceConsumer:
+    enabled: true
     replicas: 1
     env: []
     resources: {}
@@ -930,6 +1075,10 @@ snuba:
     # tolerations: []
     # podLabels: []
     autoOffsetReset: "earliest"
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 5
+      periodSeconds: 320
     # noStrictOffsetReset: false
     # maxBatchSize: ""
     # processes: ""
@@ -954,15 +1103,14 @@ snuba:
     env: []
 
   clickhouse:
-    maxConnections: 1
-    blockConnections: false
-
+    maxConnections: 100
 hooks:
   enabled: true
   removeOnSuccess: true
   activeDeadlineSeconds: 100
   shareProcessNamespace: false
   dbCheck:
+    enabled: true
     image:
       # repository: subfuzion/netcat
       # tag: latest
@@ -985,6 +1133,7 @@ hooks:
     # volumes: []
     # volumeMounts: []
   dbInit:
+    enabled: true
     env: []
     # podLabels: []
     podAnnotations: {}
@@ -1002,6 +1151,7 @@ hooks:
     # volumes: []
     # volumeMounts: []
   snubaInit:
+    enabled: true
     # As snubaInit doesn't support configuring partition and replication factor, you can disable snubaInit's kafka topic creation by setting `kafka.enabled` to `false`,
     # and create the topics using `kafka.provisioning.topics` with the desired partition and replication factor.
     # Note that when you set `kafka.enabled` to `false`, snuba component might fail to start if newly added topics are not created by `kafka.provisioning`.
@@ -1021,7 +1171,8 @@ hooks:
     # tolerations: []
     # volumes: []
     # volumeMounts: []
-  snubaMigrate: {}
+  snubaMigrate:
+    enabled: true
     # podLabels: []
     # volumes: []
     # volumeMounts: []
@@ -1268,7 +1419,6 @@ config:
 
 clickhouse:
   enabled: true
-  singleNode: false
   clickhouse:
     imageVersion: "21.8.13.6"
     configmap:
@@ -1321,7 +1471,7 @@ externalClickhouse:
   username: default
   password: ""
   database: default
-  singleNode: false
+  singleNode: true
   # existingSecret: secret-name
   ## set existingSecretKey if key name inside existingSecret is different from 'postgres-password'
   # existingSecretKey: secret-key-name
@@ -1342,16 +1492,6 @@ zookeeper:
 # See https://github.com/bitnami/charts/tree/master/bitnami/kafka
 kafka:
   enabled: true
-  replicaCount: 3
-  allowPlaintextListener: true
-  defaultReplicationFactor: 3
-  offsetsTopicReplicationFactor: 3
-  transactionStateLogReplicationFactor: 3
-  transactionStateLogMinIsr: 3
-  # 50 MB
-  maxMessageBytes: "50000000"
-  # 50 MB
-  socketRequestMaxBytes: "50000000"
   provisioning:
     enabled: true
     # Topic list is based on files below.
@@ -1458,16 +1598,19 @@ kafka:
       - name: ingest-occurrences
       - name: snuba-spans
       - name: shared-resources-usage
+  listeners:
+    client:
+      protocol: "PLAINTEXT"
+    controller:
+      protocol: "PLAINTEXT"
+    interbroker:
+      protocol: "PLAINTEXT"
+    external:
+      protocol: "PLAINTEXT"
   zookeeper:
     enabled: false
   kraft:
     enabled: true
-  service:
-    ports:
-      client: 9092
-  listeners:
-    client:
-      protocol: PLAINTEXT
 
   ## Use this to enable an extra service account
   # serviceAccount:
@@ -1639,6 +1782,8 @@ memcached:
 ##
 metrics:
   enabled: false
+
+  podAnnotations: {}
 
   ## Configure extra options for liveness and readiness probes
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)

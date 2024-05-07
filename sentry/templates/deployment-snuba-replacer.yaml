@@ -1,3 +1,4 @@
+{{- if .Values.snuba.replacer.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -28,7 +29,7 @@ spec:
     metadata:
       annotations:
         checksum/snubaSettingsPy: {{ .Values.config.snubaSettingsPy | sha256sum }}
-        checksum/config.yaml: {{ include (print $.Template.BasePath "/configmap-snuba.yaml") . | sha256sum }}
+        checksum/config.yaml: {{ include "sentry.snuba.config" . | sha256sum }}
         {{- if .Values.snuba.replacer.annotations }}
 {{ toYaml .Values.snuba.replacer.annotations | indent 8 }}
         {{- end }}
@@ -122,4 +123,5 @@ spec:
           name: {{ template "sentry.fullname" . }}-snuba
 {{- if .Values.snuba.replacer.volumes }}
 {{ toYaml .Values.snuba.replacer.volumes | indent 6 }}
+{{- end }}
 {{- end }}

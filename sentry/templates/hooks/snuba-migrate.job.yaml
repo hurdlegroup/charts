@@ -1,4 +1,4 @@
-{{- if .Values.hooks.enabled -}}
+{{- if and .Values.hooks.enabled .Values.hooks.snubaMigrate.enabled -}}
 {{- $clickhouseHost := include "sentry.clickhouse.host" . -}}
 apiVersion: batch/v1
 kind: Job
@@ -24,7 +24,7 @@ spec:
       name: {{ template "sentry.fullname" . }}-snuba-migrate
       annotations:
         checksum/snubaSettingsPy: {{ .Values.config.snubaSettingsPy | sha256sum }}
-        checksum/config.yaml: {{ include (print $.Template.BasePath "/configmap-snuba.yaml") . | sha256sum }}
+        checksum/config.yaml: {{ include "sentry.snuba.config" . | sha256sum }}
         {{- if .Values.snuba.annotations }}
 {{ toYaml .Values.snuba.annotations | indent 8 }}
         {{- end }}

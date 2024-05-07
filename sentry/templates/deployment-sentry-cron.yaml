@@ -1,3 +1,4 @@
+{{- if .Values.sentry.cron.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,7 +21,7 @@ spec:
       annotations:
         checksum/configYml: {{ .Values.config.configYml | toYaml | toString | sha256sum }}
         checksum/sentryConfPy: {{ .Values.config.sentryConfPy | sha256sum }}
-        checksum/config.yaml: {{ include (print $.Template.BasePath "/configmap-sentry.yaml") . | sha256sum }}
+        checksum/config.yaml: {{ include "sentry.config" . | sha256sum }}
         {{- if .Values.sentry.cron.annotations }}
 {{ toYaml .Values.sentry.cron.annotations | indent 8 }}
         {{- end }}
@@ -129,3 +130,4 @@ spec:
       {{- if .Values.sentry.cron.priorityClassName }}
       priorityClassName: "{{ .Values.sentry.cron.priorityClassName }}"
       {{- end }}
+{{- end }}
