@@ -1,10 +1,8 @@
 name: Build and push Chart
-
 on:
   push:
-    tags:
-      - '*'
-
+    branches:
+      - develop
 jobs:
   build-push:
     runs-on: ubuntu-latest
